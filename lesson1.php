@@ -1,46 +1,60 @@
 <?php
- echo "Hello from my first script <br/>";
- echo '<b>i am trying single quote right now </b> <br/>' ;
- // this is a single comment    
-    /*
-        kldsjflsdj
-        dlfkjsdlfdjs
-        dlkfsdjflsdj
-    */
+echo "this is our first script"; 
+echo '<br/>';
+echo '<b>this is our first script</b> <br/>';
+
+echo 6 ."<br/>"; 
+
+// variables
+
+$name = "hemdan";
+
+echo "Hi ".$name;
+echo "<br/>";
+
+// constant 
+
+define(p,3.14,false); // false = case sinsitve , true = no case sinsitve 
+echo p."<br/>";
 
 
-        // variables
-        $name = 'Ahmed';
-        echo "hi " .$name ."<br/>";
-        define(p,3.14, false);
-        echo p."<br>";
+//string 
 
 
-        // variables data type 
+$var = "hello i am string "; 
 
-        $father ="Hemdan";
-        $x= 3;
-        $y = 4.5;
-        $status = true;
+//integer 
 
-        echo var_dump($father)."<br>";
-        echo var_dump($x)."<br>";
-        echo var_dump($y)."<br>";
-        echo var_dump($status)."<br>";
+$numer = 6; 
+
+// float 
+
+$number2 = 6.3;
+
+//boolean 
 
 
-        // variable variables 
+$status = true ; // can be flase 
 
-        $a = "hello";
-        $hello = "welcome"  ;
-        echo $$a    ; // $a = hello   => $hello => welcome 
+
+// if you want to know the kind of var you can use var_dump 
+
+echo var_dump($var)."<br/>";
+
+
+//variable variables 
+
+
+$a= "hello";
+$hello = "ahmed"; 
+echo $$a;  // $a = hello  => $hello  => ahmed 
 
 ?>
-<!DOCTYPE html>
 <html>
-<head>
-</head>
-<body>
-    
-</body>
+    <head></head>
+    <body>
+        <script >
+            // php code 
+        </script>
+    </body>
 </html>
