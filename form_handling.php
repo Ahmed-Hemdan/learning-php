@@ -9,50 +9,50 @@
     $var =stripslashes($var);
     return $var;
  }
-        if(isset($_POST["show"])){
-            $fname=check($_POST['fname']);
-            // you have to continue like that with all inputs you need 
-            // and you can make new file too add all your function in 
-            // and just include it or make it reuqire as you want 
-            $lname= check($_POST['lname']);
-            $pass= check($_POST['pass']);
-            $phone=check($_POST['phone']);
-            $email= check($_POST['email']);
-            $website =check($_POST['website']);
-            $comment =check($_POST['comment']);
+        // if(isset($_POST["show"])){
+        //     $fname=check($_POST['fname']);
+        //     // you have to continue like that with all inputs you need 
+        //     // and you can make new file too add all your function in 
+        //     // and just include it or make it reuqire as you want 
+        //     $lname= check($_POST['lname']);
+        //     $pass= check($_POST['pass']);
+        //     $phone=check($_POST['phone']);
+        //     $email= check($_POST['email']);
+        //     $website =check($_POST['website']);
+        //     $comment =check($_POST['comment']);
 
-            if(ctype_alpha($fname)){ // check for alphabatic only
-                echo "valide frist name<br>";
-            }else{
-                echo "not valid first name<br>";
-            }
+        //     if(ctype_alpha($fname)){ // check for alphabatic only
+        //         echo "valide frist name<br>";
+        //     }else{
+        //         echo "not valid first name<br>";
+        //     }
 
-            if(ctype_digit($phone)){ // this check for number only
-                echo "valid phone number<br>";
-            }else{
-                echo "invalid phone number<br>";
-            }
+        //     if(ctype_digit($phone)){ // this check for number only
+        //         echo "valid phone number<br>";
+        //     }else{
+        //         echo "invalid phone number<br>";
+        //     }
 
-            if(ctype_alnum($lname)){ // this allows alphabatic and numbers
-                echo 'valid last name <br>';
-            }else{
-                echo "invalid last name <br>";
-            }
+        //     if(ctype_alnum($lname)){ // this allows alphabatic and numbers
+        //         echo 'valid last name <br>';
+        //     }else{
+        //         echo "invalid last name <br>";
+        //     }
             
-            if(ctype_upper($comment)){ // this check for capital and small chars but can check simbols or spaces 
-                echo "capital chars <br>";
-            }elseif(ctype_lower($comment)){
-                echo "small chars <br>";
-            }else{
-                echo "mix <br>";
-            }
+        //     if(ctype_upper($comment)){ // this check for capital and small chars but can check simbols or spaces 
+        //         echo "capital chars <br>";
+        //     }elseif(ctype_lower($comment)){
+        //         echo "small chars <br>";
+        //     }else{
+        //         echo "mix <br>";
+        //     }
 
-            if(ctype_graph($email)){ // this allows every thing but spaces 
-                echo "no spaces <br>";
-            }else{
-                echo "there is spaces <br>";
-            }
-        }
+        //     if(ctype_graph($email)){ // this allows every thing but spaces 
+        //         echo "no spaces <br>";
+        //     }else{
+        //         echo "there is spaces <br>";
+        //     }
+        // }
 
 
 
@@ -65,6 +65,30 @@
 //     $fname=strip_slashes($fname);
 //     echo $fname;
 // }
+
+
+// Filteres validate - senitize 
+
+if(isset($_POST['show'])){
+
+    $fname = check($_POST['fname']);
+
+    if(filter_var($fname,FILTER_VALIDATE_BOOLEAN)) {
+        echo "boolean data type<br>";
+    }else if(filter_var($fname,FILTER_VALIDATE_INT)) {
+        echo "integer<br>";
+    }else if(filter_var($fname, FILTER_VALIDATE_FLOAT)){
+        echo "float<br>";
+    } else if(filter_var($fname, FILTER_VALIDATE_URL)){ // needs all link start from http - https
+            echo 'this is a link<br>';
+    }else if(filter_var($fname,FILTERE_VALIDATE_EMAIL)){
+        echo "email<br>";
+    }else{
+        echo "String<br>";
+    }
+
+
+}
 
 ?>
 
