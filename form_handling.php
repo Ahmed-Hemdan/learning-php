@@ -69,25 +69,58 @@
 
 // Filteres validate - senitize 
 
+// if(isset($_POST['show'])){
+
+//     $fname = check($_POST['fname']);
+
+//     if(filter_var($fname,FILTER_VALIDATE_BOOLEAN)) {
+//         echo "boolean data type<br>";
+//     }else if(filter_var($fname,FILTER_VALIDATE_INT)) {
+//         echo "integer<br>";
+//     }else if(filter_var($fname, FILTER_VALIDATE_FLOAT)){
+//         echo "float<br>";
+//     } else if(filter_var($fname, FILTER_VALIDATE_URL)){ // needs all link start from http - https
+//             echo 'this is a link<br>';
+//     }else if(filter_var($fname,FILTERE_VALIDATE_EMAIL)){
+//         echo "email<br>";
+//     }else{
+//         echo "String<br>";
+//     }
+
+
+// }
+
 if(isset($_POST['show'])){
+    if(isset($_FILES['image'])){
+    print_r($_FILES['image']);
 
-    $fname = check($_POST['fname']);
+    $file_name = $_FILES['image']["name"];
+    $file_size= $_FILES['image']['size'];
+    $file_tpm = $_FILES['image']['tmp_name'];
+    $file_type= $_FILES['image']['type'];
+    
+    $avalibale_ext= array("jpg","png",jpeg);
+    //strtolower this to take care of char senc 
+    // end to just to take the end of the sentance after /
+    // explode to to cut the file type from / mark 
+    $ext= strtolower(end(explode("/",$file_type)));
 
-    if(filter_var($fname,FILTER_VALIDATE_BOOLEAN)) {
-        echo "boolean data type<br>";
-    }else if(filter_var($fname,FILTER_VALIDATE_INT)) {
-        echo "integer<br>";
-    }else if(filter_var($fname, FILTER_VALIDATE_FLOAT)){
-        echo "float<br>";
-    } else if(filter_var($fname, FILTER_VALIDATE_URL)){ // needs all link start from http - https
-            echo 'this is a link<br>';
-    }else if(filter_var($fname,FILTERE_VALIDATE_EMAIL)){
-        echo "email<br>";
+    echo $ext ."<br>";
+
+    if(in_array($ext,$avalibale_ext)){
+        echo "valid ext <br>";
     }else{
-        echo "String<br>";
+        echo "invalid ext <br>";
     }
 
+        if(!$error){
+            move_uploaded_file($file_tpm,"images/".$file_name );
+        }else{
+            echo "Error <br>";
+        }
 
+
+}
 }
 
 ?>
@@ -97,7 +130,7 @@ if(isset($_POST['show'])){
     <head></head>
     <body>
         
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td>First name:</td>
