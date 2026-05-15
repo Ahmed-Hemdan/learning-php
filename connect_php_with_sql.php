@@ -5,7 +5,7 @@
         // use this method to bypass with the native password you wrote before
         // ALTER USER 'Hemdan'@'%' IDENTIFIED WITH mysql_native_password BY 'Ahmed964#';
         // FLUSH PRIVILEGES;
-
+        // NOTE you will need to open your sql bin path first in your cmd to use this commands
         $host= "localhost";
         $user_name="Hemdan" ;
         $pass="Ahmed964#" ;
