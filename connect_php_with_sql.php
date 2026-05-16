@@ -12,7 +12,7 @@
         $db_name="users";
         $connection = mysqli_connect($host, $user_name,$pass,$db_name);
         if($connection){
-            echo "Connected";
+            echo "Connected <br>";
         }else{
             die("error: ". mysqli_connect_error()); // this will break the code here if there is error 
         }
